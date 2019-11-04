@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import Store from './store/store';
+import {connect} from 'react-redux';
 import ActionCreator from './store/actionCreator'
 
 class List extends Component{
@@ -28,4 +29,4 @@ class List extends Component{
     }
 }
 
-export default List
+export default connect(state=>state)(List)

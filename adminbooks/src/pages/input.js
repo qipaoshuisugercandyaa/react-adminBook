@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import ActionCreator from './store/actionCreator';
-import Store from './store/store';
+import Store from './store/store'
+import {connect} from 'react-redux'
 
 class Input extends Component{
     render(){
@@ -17,4 +18,4 @@ class Input extends Component{
     }
 }
 
-export default Input
+export default connect(state=>state)(Input)
