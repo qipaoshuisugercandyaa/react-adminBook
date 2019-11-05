@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import store from './store/store';
-import App from './App';
+import App from './router';
+import axios from './utils/axios';
 import * as serviceWorker from './serviceWorker';
-
+React.Component.prototype.$axios=axios;
 ReactDOM.render(
     <Provider store={store}>
     <App />
