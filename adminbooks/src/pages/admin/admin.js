@@ -1,24 +1,64 @@
 import React,{Component} from 'react';
 // import Style from './index.module.less';
+import Addbook from '../../components/addmodal/addmodal';
 import actionCreator from '../../store/actionCreator';
 import Modal from '../../components/modal/modal';
 import CustomSlider from '../../components/customSlider/customSlider';
-import { Layout, Button,  Dropdown, Icon,Menu} from 'antd';
+import { Layout, Button,  Dropdown, Icon,Menu,message} from 'antd';
 import {withRouter} from 'react-router-dom';
 const { Header, Content, Footer, Sider } = Layout;
 // import {withRouter} from 'react-router-dom';
 
 class Admin extends Component{
+    constructor(){
+       super();
+       this.state={
+           isShow:false
+       }
+    }
     renderMenu=()=>{
       return (
           <Menu>
               <Menu.Item onClick={this.outLogin}>
                   <span>退出</span>
               </Menu.Item>
+              <Menu.Item onClick={this.addBook}>
+                  <span>添加书籍</span>
+              </Menu.Item>
+              <Menu.Item onClick={()=>{
+                  this.$axios.post('/api/adminbook/root/update',{uid:'5dc241203c569098ec8db4c8',rootLevel:'9'}).then((res)=>{
+
+                  })
+              }}>
+                  <span>初始化列表</span>
+              </Menu.Item>
           </Menu>
       )
 
-    }
+    };
+    close=()=>{
+        this.setState({isShow:false});
+    };
+    addBook=()=>{
+        this.setState({isShow:true});
+    };
+    addBookList=(data)=>{
+        this.setState({isShow:false});
+        let bookList=JSON.parse(window.localStorage.getItem('bookList'));
+        bookList.unshift(data);
+        this.$axios.post('/api/adminbook/root/addbook',{uid:'5dc241203c569098ec8db4c8',bookList}).then((res)=>{
+         if(res.err===0){
+             message.success('添加成功');
+             window.localStorage.setItem('bookList',JSON.stringify(bookList));
+             this.props.history.replace('/admin/rootlist');
+         }
+        });
+    };
+    // update=()=>{
+    //     this.$axios.post('/api/adminbook/root/update',{uid:'5dc12b90ce9fdb22cbb24eb1',rootLevel:'9'}).then((res)=>{
+    //         console.log('updata',res);
+    //     })
+    // }
     outLogin=()=>{
         let uid=JSON.parse(window.localStorage.getItem('uid'));
         this.$axios.post('/api/admin/user/logout',{uid}).then((res)=>{
@@ -60,6 +100,7 @@ class Admin extends Component{
                  </Layout>
              </Layout>
              <Modal></Modal>
+             <Addbook isShow={this.state.isShow} close={this.close} addBookList={this.addBookList}></Addbook>
          </div>
         )
     }
