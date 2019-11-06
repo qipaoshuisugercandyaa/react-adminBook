@@ -29,11 +29,14 @@ class rootlist extends Component{
              key: 'address',
              render:()=>{
                  return(
-                     <Button size='small'>借阅</Button>
+                     <Button size='small' onClick={this.status}>借阅</Button>
                  )
              }
          },
     ];
+    status=()=>{
+
+    };
     // addBook=()=>{
     //     this.$axios.post('/api/adminbook/root/add',{userName:'suger',passWord:'6666'}).then((res)=>{
     //         console.log('add',res);
