@@ -13,6 +13,7 @@ class RootRoute extends Component{
             <HashRouter>
                 <Switch>
                     <Redirect exact from="/" to="/login"></Redirect>
+                    <Redirect exact from="/admin" to="/admin/home"></Redirect>
                     <Route  path='/admin' component={()=>{
                         return (
                             <Admin>
