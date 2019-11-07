@@ -44,16 +44,6 @@ class rootlist extends Component{
              }
          },
     ];
-    // addBook=()=>{
-    //     this.$axios.post('/api/adminbook/root/add',{userName:'suger',passWord:'6666'}).then((res)=>{
-    //         console.log('add',res);
-    //     })
-    // }
-    // update=()=>{
-    //     this.$axios.post('/api/adminbook/root/update',{uid:'5dc12b90ce9fdb22cbb24eb1',rootLevel:'9'}).then((res)=>{
-    //         console.log('updata',res);
-    //     })
-    // }
     upBook(data){
 
     }
