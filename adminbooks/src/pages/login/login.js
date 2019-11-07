@@ -9,7 +9,6 @@ class Login extends Component{
             }else{
                 let url='/api/adminbook/user/login';
                 this.$axios.post(url,userinfo).then((data)=>{
-                    console.log(data,userinfo)
                     if(data.err===0){
                         window.localStorage.setItem('rootList',JSON.stringify(data.rootList));
                         window.localStorage.setItem('token',JSON.stringify(data.token));
