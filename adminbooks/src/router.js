@@ -6,6 +6,7 @@ const Admin=Loadable(()=>import('./pages/admin/admin'));
 const BookList=Loadable(()=>import('./pages/admin/rootlist'));
 const LookBook=Loadable(()=>import('./pages/admin/booklist'));
 const BookNum=Loadable(()=>import('./pages/admin/booknum'));
+const Home=Loadable(()=>import('./pages/admin/home'));
 class RootRoute extends Component{
     render(){
         return(
@@ -16,7 +17,7 @@ class RootRoute extends Component{
                         return (
                             <Admin>
                                 {/*<Route  path='/admin/user' component={User}></Route>*/}
-                                {/*<Route  path='/admin/home' component={Home}></Route>*/}
+                                <Route  path='/admin/home' component={Home}></Route>
                                 <Route path='/admin/bookList' component={LookBook}></Route>
                                 <Route path='/admin/rootlist' component={BookList}></Route>
                                 <Route path='/admin/percentage' component={BookNum}></Route>
