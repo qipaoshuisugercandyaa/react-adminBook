@@ -61,7 +61,8 @@ class Admin extends Component{
     // }
     outLogin=()=>{
         let uid=JSON.parse(window.localStorage.getItem('uid'));
-        this.$axios.post('/api/admin/user/logout',{uid}).then((res)=>{
+        this.$axios.post('/api/adminbook/user/logout',{uid}).then((res)=>{
+            console.log(res)
             if(res.err===0){
                 window.localStorage.removeItem('uid');
                 window.localStorage.removeItem('rootList');
